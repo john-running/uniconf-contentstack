@@ -10,6 +10,12 @@ import { Composition, Slot } from "@uniformdev/canvas-react";
 import { canvasClient } from "lib/canvasClient";
 import { resolveRenderer } from "../components";
 
+//import enhancer 
+import doEnhance from "../lib/enhancer";
+
+
+
+
 const PreviewDevPanel = dynamic(
   () => import("lib/preview/PreviewDevPanel/PreviewDevPanel")
 );
@@ -53,6 +59,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         : CANVAS_PUBLISHED_STATE,
   });
 
+// add enhancer here with doEnhance call to enhance composition
+  
+  doEnhance(composition);
+  
+  
   return {
     props: {
       composition,
