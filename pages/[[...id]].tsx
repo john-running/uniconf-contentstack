@@ -61,9 +61,10 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
 // add enhancer here with doEnhance call to enhance composition
   
-  doEnhance(composition);
+await doEnhance(composition);
   
-  
+  // console.log ("composition after enhance", JSON.stringify(composition, null, 2));
+
   return {
     props: {
       composition,

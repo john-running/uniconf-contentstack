@@ -13,7 +13,6 @@ export default function doEnhanceCS(composition: any) {
     region: contentstack.Region.US,
   });
 
-  console.log ("composition before enhance", JSON.stringify(composition, null, 2));
 
   return enhance({
     composition,
