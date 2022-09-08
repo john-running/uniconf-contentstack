@@ -2,22 +2,6 @@ import Link from "next/link";
 import { ComponentProps } from "@uniformdev/canvas-react";
 import Splitter from "./Splitter";
 
-// type HeroProps = ComponentProps<{
-//   title: string;
-//   text: string;
-//   buttonText: string;
-//   buttonLink: string;
-//   image?: string;
-// }>;
-
-// export function Hero({
-//   title,
-//   text,
-//   buttonText,
-//   image,
-//   buttonLink,
-// }: HeroProps) {
-
 
 export const Hero: React.FC<any> = ({ component }) => {
   const csentry = component?.parameters?.csentry?.value; 
@@ -30,12 +14,10 @@ export const Hero: React.FC<any> = ({ component }) => {
   
 
   const shareEvent = () => {
-    alert(eventName);
     window.gtag?.('event', eventName);
   };
 
   if (csentry) {
-    // console.log("csentry", csentry);
     title = csentry.title;
     text = csentry.description;
     buttonText = csentry.button_text;
@@ -43,11 +25,7 @@ export const Hero: React.FC<any> = ({ component }) => {
     image = csentry.image?.url;
 
   }
-  // const { verticalTitle, header, shortCopy, image } = entry || {};
-  // const { src, alt } = image || {};
-  // const imageSrc = encodeURIComponent(src);
-  const theTitle = component.parameters.title.value;
-  // console.log("parameters....", JSON.stringify(component.parameters, null, 2));
+
 
   return (
     <>
@@ -65,15 +43,6 @@ export const Hero: React.FC<any> = ({ component }) => {
               className="leading-normal text-2xl mb-8"
               dangerouslySetInnerHTML={{ __html: text }}
             />
-
-{/*             
-                <button
-                  type="button"
-                  onClick={shareEvent}
-                  className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
-                >
-                  {buttonText}
-                </button> */}
 
             {buttonText ? (
               <Link prefetch={false} href={buttonLink ? buttonLink : "#"}>
